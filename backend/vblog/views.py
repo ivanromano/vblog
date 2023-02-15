@@ -34,6 +34,8 @@ class CategoryListView(APIView):
               sub_item['views'] = sub_category.views
               item['sub_categories'].append(sub_item) #item obtiene todo
 
+              
+
           result.append(item) 
       return Response({'categories': result}, status=status.HTTP_200_OK)
     else: 

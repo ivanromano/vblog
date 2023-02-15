@@ -1,6 +1,6 @@
 <template>
 
-<nav v-if="nuevoID" class="z-20 flex flex-col md:flex-row bg-blue-600 text-white shadow-md leading-none shadow-blue-200 shadow-md">
+<nav v-if="nuevoID" class="z-20 flex flex-col md:flex-row w-full bg-blue-600 text-white shadow-md leading-none shadow-blue-200 shadow-md fixed">
   <div class="flex items-center mx-5 py-1 md:py-0">
     <Icon name="logos:vector-timber" class="text-[50px] "/>
     <h1 class="text-2xl ml-2 inline-block">ecgress</h1>
@@ -12,7 +12,9 @@
       <li> <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" to="/">home</NuxtLink> </li>
       <!-- ! categories -->
       <li v-for="item in nuevoID" :key="item.new_id">
-        <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" :to="`${item.new_id}`">{{ item.name }}</NuxtLink>
+        <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" 
+        :to="`${item.new_id}`" >{{ item.name }}
+        </NuxtLink>
       </li>
     </ul>
   </div>
@@ -50,29 +52,3 @@ a:hover {
 
 
 </style>
-
-
-
-
-<!-- 
-<template>
-      <ul class="text-lg md:flex md:ml-auto ">
-        <li v-for="item in nuevoID" :key="item.new_id">
-          <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" :to="`${item.new_id}`">{{ item.name }}</NuxtLink>
-        </li>
-      </ul>
-  </template>
-  
-  <script setup>
-  import { useDjangoStore } from '../store/tienda';
-  
-  const DjangoStore = useDjangoStore()
-  const numberRandom = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-  
-  let nuevoID = DjangoStore.principal_categories.map((objeto, index) => {
-    return { ...objeto, new_id: index }
-  });
-  </script> -->
-  

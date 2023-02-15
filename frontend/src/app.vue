@@ -1,6 +1,6 @@
 <template>
 <Vnavbar/>
-<NuxtPage  class="pb-10" />
+<NuxtPage  class="pb-10 bg-light-700" />
 <Vfooter/>
 </template>
 
