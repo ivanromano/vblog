@@ -7,6 +7,8 @@ from django.conf import settings
 from django.core.files import File
 from io import BytesIO
 from ckeditor.fields import RichTextField
+from django.shortcuts import get_object_or_404
+
 
 def user_directory_path(instance, filename):
   # el 0 es la instancia, el 1 el filename
@@ -29,13 +31,7 @@ class Category(models.Model):
     views = ViewCount.objects.filter(category=self).count
     return views
 
-# ! contador de visitas
-class ViewCount(models.Model):
-  category =  models.ForeignKey(Category, related_name='category_view_count', on_delete=models.CASCADE)
-  ip_user =   models.CharField(max_length=255)
 
-  def __str__(self):
-    return {self.ip_user}
 
 # ! Post
 class Post(models.Model):
@@ -51,9 +47,10 @@ class Post(models.Model):
   description = RichTextField(blank=True)
   slug =        models.SlugField(max_length=255, null=False, unique=True)
   published =   models.DateTimeField(default=timezone.now)
-  objects =     models.Manager
+  objects =     models.Manager()
   postobjects = PostObjects()
   category =    models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+  views = models.IntegerField(default=0)
 
 #  se ordena
   class Meta:
@@ -69,11 +66,21 @@ class Post(models.Model):
     if self.thumbnail:
       return 'http://127.0.0.1:8000' + self.thumbnail.url
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    comments = Comment.objects.filter(post=post)
 
+# ! contador de visitas
+class ViewCount(models.Model):
+  post = models.ForeignKey(Post, on_delete=models.CASCADE)
+  ip_user = models.CharField(max_length=20, null=True)
+  count = models.IntegerField(default=0)
 
-
-
+  def __str__(self):
+    return {self.ip_user}
 
 
 

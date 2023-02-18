@@ -1,4 +1,3 @@
-
 export default defineNuxtConfig({
   modules: [
     'nuxt-windicss', 'nuxt-icon', '@pinia/nuxt', 
@@ -21,5 +20,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     MONGODB_URI: process.env.MONGODB_URI
-  }
+  },
+
 })
+

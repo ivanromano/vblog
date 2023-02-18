@@ -12,6 +12,7 @@ export const useDjangoStore = defineStore("django", () => {
   const previous = ref()
   const principal_categories = ref([])
   const vblog = ref(null)
+  const blog_slug = ref(null)
 
   const categories = async () => {
     try {
@@ -63,11 +64,10 @@ export const useDjangoStore = defineStore("django", () => {
     }
   }
 
-  const get_blog = async (slug = 'pensante') => {
+  const get_blog = async (slug = `moscas`) => {
     try {
-      const res = await axios.get(`${localhost}/blog/?slug=${slug}`)
-      console.log(res.data.results);
-      
+      const res = await axios.get(`${localhost}/blog/${slug}`)
+      return res.data
     } catch (error) {
       console.log(error);
     }
@@ -97,12 +97,15 @@ export const useDjangoStore = defineStore("django", () => {
 			
 
       // full_blog_category('pensante')
+      // get_blog('moscas')
       categories()
       lista_blog()
 	return {contenido,
           token,
           principal_categories,
           vblog,
+          blog_slug,
+          get_blog,
           categories, lista_blog,
           pagi_lista_blog,
           full_blog_category,
