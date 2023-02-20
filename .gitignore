@@ -20,11 +20,4 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
-.env
-__pycache__
-.gitignore
-
-CREATE_SUPERUSER = True
-DJANGO_SUPERUSER_EMAIL = <...>
-DJANGO_SUPERUSER_PASSWORD = <...>
-DJANGO_SUPERUSER_USERNAME =<...>
+env

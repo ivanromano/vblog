@@ -10,40 +10,25 @@ export const useDjangoStore = defineStore("django", () => {
   const count = ref()
   const next = ref()
   const previous = ref()
-  const vblog = ref([])
-  const blog_slug = ref(null)
   const principal_categories = ref([])
+  const vblog = ref(null)
+  const blog_slug = ref(null)
 
-
-  
   const categories = async () => {
-  try {
-    const res = await axios.get(`${localhost}/blog/cat`)
-    principal_categories.value = res.data.categories.map((objeto, index) => {
-      let subcategoryCounter = 0;
-      const subcategories = objeto.sub_categories.map((subcategory) => {
-        const newId = subcategoryCounter++;
-        return {
-          ...subcategory,
-          new_id: newId
-        };
-      });
-
-      return { ...objeto, sub_categories: subcategories, new_id: index };
-    });
-
-    // console.log(principal_categories.value);
-  } catch (error) {
-    console.log(error);
-  } 
-}
+    try {
+      const res = await axios.get(`${localhost}/blog/cat`)
+      // console.log(res.data.categories);
+      principal_categories.value = res.data.categories
+    } catch (error) {
+      console.log(error);
+    } 
+  }
 
   const lista_blog = async () => {
     try {
       const res = await axios.get(`${localhost}/blog/posts`)
-      
+      console.log(res.data.results);
       vblog.value = res.data.results
-      // console.log(vblog.value);
     } catch (error) {
       console.log(error);
     }

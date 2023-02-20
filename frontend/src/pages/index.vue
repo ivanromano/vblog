@@ -2,8 +2,8 @@
 <main v-if="route.params.slug">
   <NuxtPage/>
 </main>
-<main v-else class="pt-[90px]">
-  <h1 class="text-lg text-center bg-light-500 p-3">Bereshipsis</h1>
+<main v-else>
+  <!-- {{DjangoStore.lista_blog()}} -->
   <Vcarousel/>
 </main>
 </template>
