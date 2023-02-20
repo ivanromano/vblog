@@ -1,5 +1,5 @@
 from django.urls import path
-from users import views
+from user import views
 
 urlpatterns = [
     path('token', views.CreateTokenView.as_view()),
@@ -7,6 +7,4 @@ urlpatterns = [
     path('user', views.RetreiveUpdateUserView.as_view()),
     path('list', views.ListaUserView.as_view())
 ]
-
-
 

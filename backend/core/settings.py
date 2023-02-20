@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from corsheaders.defaults import default_headers
+from datetime import timedelta
 import os 
 import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,13 +22,15 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEV')
 
 LIBRERIAS = [ 
     'rest_framework', 
+    # auth
     'rest_framework.authtoken',
     # para mejores textos en el blog
     'ckeditor',
     'ckeditor_uploader',
     # para documentacion
     'drf_spectacular',
-    'users',
+    # apps
+    'user',
     'vblog',
     'dist',
     'corsheaders',
@@ -145,7 +148,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -171,7 +174,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'users.User'
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -179,6 +182,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+
+AUTH_USER_MODEL = 'user.User'
 
 if not DEBUG:
     ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEPLOY')  

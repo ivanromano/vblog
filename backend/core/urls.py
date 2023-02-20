@@ -7,7 +7,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls')),
+    path('users/', include('user.urls')),
+    # path('auth/', include('djoser.urls')),
+    # path('auth/', include('djoser.urls.jwt')),
+    # path('auth/', include('djoser.social.urls')),
+
     path('blog/', include('vblog.url')),
     path('api/', SpectacularAPIView.as_view(), name='api'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='api'), name='api-docs'),

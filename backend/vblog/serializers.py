@@ -14,4 +14,4 @@ class ViewCountSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta: 
         model=Post
-        fields = ('id', 'title', 'thumbnail', 'excerpt', 'description', 'slug', 'published', 'category', 'get_thumnail')
+        fields = ('id', 'title', 'thumbnail', 'excerpt', 'description', 'slug', 'published', 'carousel', 'category', 'get_thumnail')

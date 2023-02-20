@@ -47,6 +47,7 @@ class Post(models.Model):
   description = RichTextField(blank=True)
   slug =        models.SlugField(max_length=255, null=False, unique=True)
   published =   models.DateTimeField(default=timezone.now)
+  carousel =    models.BooleanField(default=True)
   objects =     models.Manager()
   postobjects = PostObjects()
   category =    models.ForeignKey(Category, on_delete=models.CASCADE, null=True)

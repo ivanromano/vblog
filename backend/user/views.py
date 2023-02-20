@@ -1,8 +1,8 @@
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 
-from users.serializer import UserSerializer, AuthTokenSerializer
-from users.models import User
+from user.serializers import UserSerializer, AuthTokenSerializer
+from user.models import User
 
 # Create your views here.
 
@@ -28,4 +28,3 @@ class RetreiveUpdateUserView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
-
