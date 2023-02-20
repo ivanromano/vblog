@@ -21,3 +21,6 @@ node_modules
 *.sln
 *.sw?
 env
+db.sqlite3
+venv
+__pycache__
