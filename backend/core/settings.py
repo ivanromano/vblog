@@ -48,7 +48,7 @@ LIBRERIAS = [
 CKEDITOR_CONFIG = {
     "default": {
         "toolbar": 'full',
-        "autoParagraph": False
+        "autoParagraph": True
 
     }
 }

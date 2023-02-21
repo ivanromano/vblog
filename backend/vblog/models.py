@@ -41,7 +41,7 @@ class Post(models.Model):
     def get_queryset(self):
       return super().get_queryset()
 
-  title =       models.CharField(max_length=255)
+  title =       models.CharField(max_length=805)
   thumbnail =   models.ImageField(upload_to='uploads/', blank=True, null=True)
   excerpt =     models.TextField(null=True)
   description = RichTextField(blank=True)
@@ -64,7 +64,7 @@ class Post(models.Model):
 # para obtener la imagen
   def get_thumnail(self):
     if self.thumbnail:
-      return 'http://127.0.0.1:8000' + self.thumbnail.url
+      return 'https://vblog.onrender.com' + self.thumbnail.url
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
