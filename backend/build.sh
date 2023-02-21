@@ -6,7 +6,7 @@ pip install -r requirements.txt
 
 if [[ $CREATE_SUPERUSER ]];
 then
-  python manage.py createsuperuser --no-input
+  echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('$DJANGO_SUPERUSER_EMAIL', '$DJANGO_SUPERUSER_PASSWORD')" | python manage.py shell
 fi
  
 python manage.py collectstatic --no-input
