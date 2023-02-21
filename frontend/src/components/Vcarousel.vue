@@ -1,19 +1,26 @@
 <template>
-  {{ DjangoStore.vblog}}
-<div class=" my-[20px] mx-5 h-[200%]">
-  <v-carousel cycle height="400" interval='10000'  >
-    <v-carousel-item v-for="(item) in DjangoStore.vblog" :key="DjangoStore.vblog.id" :src="item.get_thumnail" cover > 
-    </v-carousel-item>
-  </v-carousel>
-</div>
+  <div v-if="carousel_condicional">
+    <div v-if="carousel_condicional" class="py-[15px] mx-5 text-red-600">
+      <v-carousel cycle  interval='10000'>
+        <v-carousel-item class="" v-for="(item) in carousel_condicional" :key="carousel_condicional.id" :src="item.get_thumnail" cover > 
+          <img  alt="" class="">
+        </v-carousel-item>
+      </v-carousel>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { useDjangoStore } from '../store/tienda';
 
-
 const DjangoStore = useDjangoStore()
+// const carousel_condicional = ref(null)
+
+const carousel_condicional = computed(() => {
+  return DjangoStore.vblog.filter(item => item.carousel);
+})
 </script>
+
 
 <style lang="scss" scoped>
 

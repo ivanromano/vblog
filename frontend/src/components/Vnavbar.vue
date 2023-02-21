@@ -1,18 +1,19 @@
 <template>
 
-<nav v-if="nuevoID" class="z-20 flex flex-col md:flex-row w-full bg-blue-600 text-white shadow-md leading-none shadow-blue-200 shadow-md fixed">
+<nav v-if="categories_full" class="z-20 flex flex-col md:flex-row w-full bg-blue-600 text-white shadow-md leading-none shadow-blue-200 shadow-md fixed">
   <div class="flex items-center mx-5 py-1 md:py-0">
     <Icon name="logos:vector-timber" class="text-[50px] "/>
     <h1 class="text-2xl ml-2 inline-block">ecgress</h1>
-    <Icon class="lg:invisible <lg:ml-[70%] text-[3rem] " name="radix-icons:hamburger-menu"/>
+    <button class="lg:hidden <lg:ml-auto  flex-shrink text-[2rem] " @click="show = !show"> <Icon  name="radix-icons:hamburger-menu"/> </button>
+  
   </div>
-  <div class="md:flex md:flex-grow bg-blue-700 md:bg-blue-600">
-    <ul class="text-lg md:flex md:ml-auto ">
+  <div class="lg:flex lg:flex-grow bg-blue-700 lg:bg-blue-600">
+    <ul :class="`text-lg lg:flex lg:ml-auto ${show ? '' : `<lg:hidden`  }`">
       <!-- ! home -->
-      <li> <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" to="/">home</NuxtLink> </li>
+      <li> <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" to="/" @click="show = !show">home</NuxtLink> </li>
       <!-- ! categories -->
-      <li v-for="item in nuevoID" :key="item.new_id">
-        <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" 
+      <li v-for="item in categories_full" :key="item.new_id">
+        <NuxtLink exactActiveClass="lg:border-white bg-blue-800" class="navbar_link" @click="show = !show" 
         :to="`${item.new_id}`" >{{ item.name }}
         </NuxtLink>
       </li>
@@ -21,20 +22,26 @@
 </nav>
 </template>
 
+<!--
+-->
+
+
 <script setup>
 import { useDjangoStore } from '../store/tienda';
 
 const DjangoStore = useDjangoStore()
-let nuevoID = ref(null)
+// let categories_full = ref(null)
+const show = ref(false)
 
-watch(() => DjangoStore.principal_categories, (newVal, oldVal) => {
-  if (DjangoStore.principal_categories.length) {
-  nuevoID.value = DjangoStore.principal_categories.map((objeto, index) => {
-    return { ...objeto, new_id: index }
-  })
-}
+// watch(() => DjangoStore.principal_categories, (newVal, oldVal) => {
+//   if (DjangoStore.principal_categories.length) {
+//   categories_full.value = DjangoStore.principal_categories
+// }
+// })
+
+const categories_full = computed(() => {
+  return DjangoStore.principal_categories
 })
-
 
 
 
