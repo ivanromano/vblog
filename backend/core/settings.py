@@ -196,7 +196,7 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'users.User'
 
 if not DEBUG:
-    ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEPLOY')  
+    # ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEPLOY')  
     # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
