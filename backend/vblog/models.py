@@ -41,12 +41,13 @@ class Post(models.Model):
     def get_queryset(self):
       return super().get_queryset()
 
-  title =       models.CharField(max_length=805)
+  title =       models.CharField(max_length=255)
   thumbnail =   models.ImageField(upload_to='uploads/', blank=True, null=True)
   excerpt =     models.TextField(null=True)
   description = RichTextField(blank=True)
   slug =        models.SlugField(max_length=255, null=False, unique=True)
   published =   models.DateTimeField(default=timezone.now)
+  carousel =    models.BooleanField(default=True)
   objects =     models.Manager()
   postobjects = PostObjects()
   category =    models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
