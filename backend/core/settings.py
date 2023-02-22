@@ -11,21 +11,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env()
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='ddd')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-# https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['https://vblog.onrender.com/',
-    'https://vblog.onrender.com',
-    'vblog.onrender.com',
-    'https://vblog.onrender',
-    'vblog.onrender']
+ALLOWED_HOSTS = ['*']
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
+# ALLOWED_HOSTS = ['https://vblog.onrender.com/',
+#     'https://vblog.onrender.com',
+#     'vblog.onrender.com',
+#     'https://vblog.onrender',
+#     'vblog.onrender']
+
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -56,7 +58,7 @@ CKEDITOR_CONFIG = {
 CKEDITOR_UPLOAD_PATH = "/media/"
 
 INSTALLED_APPS = [
-    'jazzmin',
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,13 +67,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ] + LIBRERIAS
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Republic",
-    "site_header": "Home",
-    "site_brand": "Home",
-    "copyright": "Republica Victinera",
-    "welcome_sign": "Welcome Admin",
-}
+# JAZZMIN_SETTINGS = {
+#     "site_title": "Republic",
+#     "site_header": "Home",
+#     "site_brand": "Home",
+#     "copyright": "Republica Victinera",
+#     "welcome_sign": "Welcome Admin",
+# }
 
 
 MIDDLEWARE = [
@@ -92,8 +94,8 @@ CORS_ORIGIN_WHITELIST = (
 
     'https://vblog-ijd8ug6zh-ivanromano.vercel.app',
 
-    'http://127.0.0.1:8001',
-    'http://localhost:8001',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
 
     'http://localhost:5173',
     'http://127.0.0.1:5173',
@@ -126,13 +128,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite://db.sqlite3',
-        conn_max_age=600    
-        )
-    }
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='sqlite://db.sqlite3',
+#         conn_max_age=600    
+#         )
+#     }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
