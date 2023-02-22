@@ -65,7 +65,7 @@ class Post(models.Model):
 # para obtener la imagen
   def get_thumnail(self):
     if self.thumbnail:
-      return 'https://vblog.onrender.com' + self.thumbnail.url
+      return 'http://localhost:8000' + self.thumbnail.url
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
