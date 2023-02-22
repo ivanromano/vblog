@@ -90,7 +90,6 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://localhost:3001',
 
-    'https://vblog-ijd8ug6zh-ivanromano.vercel.app/',
     'https://vblog-ijd8ug6zh-ivanromano.vercel.app',
 
     'http://127.0.0.1:8001',
