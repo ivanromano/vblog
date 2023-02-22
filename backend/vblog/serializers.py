@@ -1,3 +1,4 @@
+# español. subi esta app en render. todas las rutas funcionan de forma perfecta, exepto una que me tira error 500. este es mi models.py
 from rest_framework import serializers
 from .models import Post, Category, ViewCount
 
