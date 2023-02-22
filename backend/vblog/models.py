@@ -61,7 +61,6 @@ class Post(models.Model):
   def __str__(self):
     return self.title
 
-
 # para obtener la imagen
   def get_thumnail(self):
     if self.thumbnail:

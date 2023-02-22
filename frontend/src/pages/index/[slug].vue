@@ -16,6 +16,7 @@
           <div class="p-6">
             <h2 class="font-bold mb-2 text-2xl text-purple-800 ">{{ item.title }}</h2>
             <span class="float-right text-purple-700 mb-2"> {{ item.published.slice(0, 10).replace(/-/g, '/') }} </span>
+            <p> {{ item.excerpt }} </p>
             <NuxtLink :to="`/blog/${item.slug}`"  class="text-purple-600 hover:text-purple-500 underline text-sm">Ver Mas 👉</NuxtLink>
           </div>
         </div> 
@@ -62,6 +63,7 @@ post.map(p => {
 sub_category.value = DjangoStore.principal_categories[route.params.slug]?.sub_categories?.map((objeto, index) => {
   return { ...objeto }
 }) ?? navigateTo(`/`);
+
 
 
 const categories = Object.values(CategoryMap);
