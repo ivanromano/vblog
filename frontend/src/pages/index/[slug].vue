@@ -12,7 +12,7 @@
       <nav class="mx-5 my-5 bg-purple-100 ">
         <div class="bg-white rounded-lg shadow-lg">
 
-          <img :src="`${item.get_thumnail}`" alt="" />
+          <img :src="`${item.url_imagen}`" alt="" />
           <div class="p-6">
             <h2 class="font-bold mb-2 text-2xl text-purple-800 ">{{ item.title }}</h2>
             <span class="float-right text-purple-700 mb-2"> {{ item.published.slice(0, 10).replace(/-/g, '/') }} </span>

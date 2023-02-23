@@ -3,7 +3,7 @@
     <main v-if="blog_slug" class="mt-14  mx-[15px]">
       <div class="p-8 bg-white rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold mb-4">{{ blog_slug.title }}</h1>
-        <v-parallax :src="blog_slug.get_thumnail" class="object-cover max-h-[370px] w-full mb-4 rounded-lg" alt=""/>
+        <v-parallax :src="blog_slug.url_imagen" class="object-cover max-h-[370px] w-full mb-4 rounded-lg" alt=""/>
         <p class="text-gray-500 mb-4" v-html="blog_slug.description"></p>
       </div>
       {{ blog_slug }}

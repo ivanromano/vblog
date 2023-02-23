@@ -43,7 +43,8 @@ class Post(models.Model):
       return super().get_queryset()
 
   title =       models.CharField(max_length=255)
-  thumbnail =   models.ImageField(upload_to='uploads/', blank=True, null=True)
+  url_imagen =  models.CharField(max_length=900)
+  # thumbnail =   models.ImageField(upload_to='uploads/', blank=True, null=True)
   excerpt =     models.TextField(null=True)
   description = RichTextField(blank=True)
   slug =        models.SlugField(max_length=255, null=False, unique=True)
@@ -63,9 +64,9 @@ class Post(models.Model):
     return self.title
 
 # para obtener la imagen
-  def get_thumnail(self):
-    if self.thumbnail:
-      return 'https://poison.onrender.com' + self.thumbnail.url
+  # def get_thumnail(self):
+  #   if self.thumbnail:
+  #     return 'https://poison.onrender.com' + self.thumbnail.url
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
