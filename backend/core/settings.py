@@ -17,10 +17,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='ddd')
 DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['https://vblog.onrender.com/',
-    'https://vblog.onrender.com',
-    'vblog.onrender.com',
-    'https://vblog.onrender',
-    'vblog.onrender']
+    'https://poison.onrender.com',
+    'poison.onrender.com',
+    'https://poison.onrender',
+    'poison.onrender']
 
 # https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
 # ALLOWED_HOSTS = ['https://vblog.onrender.com/',
