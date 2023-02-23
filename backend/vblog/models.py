@@ -43,7 +43,7 @@ class Post(models.Model):
       return super().get_queryset()
 
   title =       models.CharField(max_length=255)
-  url_imagen =  models.CharField(max_length=900, null=True, default='bafybeiff234nianjb5dxthct7x6frafnisl4ne3zisgfmcmu4cl7mfv42y')
+  url_imagen =  models.CharField(max_length=900, null=True, default='https://bafybeifr464wgnl7jcnwwxwuvjfoo3rsxc4qma6v6nb64a53dcz6cmcc4u.ipfs.w3s.link/poi_new.jpg')
   # thumbnail =   models.ImageField(upload_to='uploads/', blank=True, null=True)
   excerpt =     models.TextField(null=True)
   description = RichTextField(blank=True)
