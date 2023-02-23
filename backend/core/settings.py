@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='ddd')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['https://vblog.onrender.com/',
+ALLOWED_HOSTS = ['127.0.0.1',
     'https://poison.onrender.com',
     'poison.onrender.com',
     'https://poison.onrender',
@@ -132,19 +132,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite://db.sqlite3',
-        conn_max_age=600    
-        )
-    }
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'mydatabase',
+#     'default': dj_database_url.config(
+#         default='sqlite://db.sqlite3',
+#         conn_max_age=600    
+#         )
 #     }
-# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
