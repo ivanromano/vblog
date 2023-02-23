@@ -62,7 +62,7 @@ CKEDITOR_CONFIG = {
 CKEDITOR_UPLOAD_PATH = "/media/"
 
 INSTALLED_APPS = [
-    'jazzmin',
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,13 +71,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ] + LIBRERIAS
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Republic",
-    "site_header": "Home",
-    "site_brand": "Home",
-    "copyright": "Republica Victinera",
-    "welcome_sign": "Welcome Admin",
-}
+# JAZZMIN_SETTINGS = {
+#     "site_title": "Republic",
+#     "site_header": "Home",
+#     "site_brand": "Home",
+#     "copyright": "Republica Victinera",
+#     "welcome_sign": "Welcome Admin",
+# }
 
 
 MIDDLEWARE = [

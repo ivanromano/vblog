@@ -11,9 +11,9 @@ from ckeditor.fields import RichTextField
 from django.shortcuts import get_object_or_404
 
 
-def user_directory_path(instance, filename):
+# def user_directory_path(instance, filename):
   # el 0 es la instancia, el 1 el filename
-  return 'blog/{0}/{1}'.format(instance.title, filename)
+  # return 'blog/{0}/{1}'.format(instance.title, filename)
 
 # ! Category
 class Category(models.Model):
