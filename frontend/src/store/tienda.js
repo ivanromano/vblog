@@ -5,7 +5,7 @@ import axios from "axios";
 export const useDjangoStore = defineStore("django", () => {
 	const token = ref(null)
 	const contenido = ref(null)
-  const localhost = 'http://localhost:8000'
+  const localhost = 'https://poison.onrender.com'
   const post = ref()
   const count = ref()
   const next = ref()
